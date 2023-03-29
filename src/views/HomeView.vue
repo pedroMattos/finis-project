@@ -1,18 +1,37 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <SearchBar />
+    <div class="receipt-cards">
+      <ReceiptCard />
+      <ReceiptCard isExpense />
+      <FreeMoney />
+    </div>
+    <DonnutGraph />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import FreeMoney from "@/components/ReceiptCard/FreeMoney.vue";
+import ReceiptCard from "@/components/ReceiptCard/ReceiptCard.vue";
+import SearchBar from "@/components/SearchBar/SearchBar.vue";
+import DonnutGraph from "@/components/Graphs/DonnutGraph.vue";
 
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   components: {
-    HelloWorld
-  }
-}
+    FreeMoney,
+    ReceiptCard,
+    SearchBar,
+    DonnutGraph,
+  },
+};
 </script>
+
+<style lang="scss" scoped>
+.receipt-cards {
+  display: flex;
+  gap: 5px;
+  // justify-content: center;
+}
+</style>
