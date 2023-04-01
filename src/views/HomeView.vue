@@ -12,9 +12,9 @@
 
 <script>
 // @ is an alias to /src
-import FreeMoney from "@/components/ReceiptCard/FreeMoney.vue";
-import ReceiptCard from "@/components/ReceiptCard/ReceiptCard.vue";
-import SearchBar from "@/components/SearchBar/SearchBar.vue";
+import FreeMoney from "@/views/ReceiptCard/FreeMoney.vue";
+import ReceiptCard from "@/views/ReceiptCard/ReceiptCard.vue";
+import SearchBar from "@/views/SearchBar/SearchBar.vue";
 import DonnutGraph from "@/components/Graphs/DonnutGraph.vue";
 
 export default {

@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <nav>
     <p>Barra de busca</p>
-  </div>
+  </nav>
 </template>
 
 <style lang="scss" scoped>
-div {
+nav {
   width: 60%;
   height: 40px;
   background-color: blue;
