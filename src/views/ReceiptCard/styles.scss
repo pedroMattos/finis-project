@@ -1,7 +1,19 @@
 .card {
-  background-color: red;
+  background-color: #dedede;
   margin: 5px 0;
   height: 150px;
   width: 100%;
   border-radius: 5px;
+  display: flex;
+  padding: 16px;
+  align-items: center;
+  justify-content: center;
+}
+.value-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: green;
+}
+.negative-incoming {
+  color: red;
 }

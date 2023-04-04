@@ -1,26 +1,21 @@
+<script setup>
+import Datepicker from "@/components/DatePicker/DatePickerComponent.vue";
+import SearchInput from "@/components/SearchInput/SearchInput.vue";
+
+function search(value) {
+  console.log({ value });
+}
+function searchDate(value) {
+  console.log({ value });
+}
+</script>
+
 <template>
   <nav>
     <SearchInput @searchTerm="search" label="Buscar" />
     <Datepicker @dateTerm="searchDate" />
   </nav>
 </template>
-
-<script>
-import Datepicker from "@/components/DatePicker/DatePickerComponent.vue";
-import SearchInput from "@/components/SearchInput/SearchInput.vue";
-
-export default {
-  components: { SearchInput, Datepicker },
-  methods: {
-    search(value) {
-      console.log(value);
-    },
-    searchDate(value) {
-      console.log(value);
-    },
-  },
-};
-</script>
 
 <style lang="scss" scoped>
 nav {

@@ -1,3 +1,16 @@
+<script setup>
+import { ref, defineProps, defineEmits } from "vue";
+defineProps({
+  label: { type: String, default: null },
+});
+const emit = defineEmits(["searchTerm"]);
+const inputValue = ref(null);
+
+function onChangeValue(value) {
+  emit("searchTerm", value);
+}
+</script>
+
 <template>
   <v-text-field
     v-model="inputValue"
@@ -10,24 +23,6 @@
     </slot>
   </v-text-field>
 </template>
-
-<script>
-export default {
-  props: {
-    label: { type: String, default: null },
-  },
-  data() {
-    return {
-      inputValue: null,
-    };
-  },
-  methods: {
-    onChangeValue(value) {
-      this.$emit("searchTerm", value);
-    },
-  },
-};
-</script>
 
 <style lang="scss" scoped>
 ::v-deep {

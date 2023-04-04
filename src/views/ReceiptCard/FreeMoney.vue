@@ -1,12 +1,17 @@
 <template>
   <div class="card">
-    <p>Dinheiro livre</p>
+    <p :class="{ 'value-text': true, 'negative-incoming': valueIncoming < 0 }">
+      R$ {{ valueIncoming }}
+    </p>
   </div>
 </template>
 
 <script>
 export default {
-  props: {},
+  props: {
+    currency: { type: String, default: "pt-br" },
+    valueIncoming: { type: [Number, String], default: "-" },
+  },
 };
 </script>
 

@@ -1,7 +1,8 @@
 <template>
   <div class="card">
-    <p v-if="isExpense">Gastos</p>
-    <p v-else>Entradas</p>
+    <p :class="{ 'value-text': true, 'negative-incoming': valueIncoming < 0 }">
+      R$ {{ valueIncoming }}
+    </p>
   </div>
 </template>
 
@@ -9,6 +10,8 @@
 export default {
   props: {
     isExpense: { type: Boolean, default: false },
+    currency: { type: String, default: "pt-br" },
+    valueIncoming: { type: [Number, String], default: "-" },
   },
 };
 </script>
