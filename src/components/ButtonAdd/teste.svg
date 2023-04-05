@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#17ead9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6078ea;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="250" height="250" rx="15" ry="15" fill="url(#grad)" />
+  <text x="80" y="165" font-size="140" font-family="Roboto" font-weight="bold" fill="white">F</text>
+</svg>
