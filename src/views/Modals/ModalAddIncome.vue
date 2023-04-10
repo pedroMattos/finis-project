@@ -1,18 +1,16 @@
 <script setup>
 import { defineProps, computed, defineEmits, ref } from "vue";
+import { formatDate } from "@/utils/formatters";
 const emit = defineEmits(["closeModal"]);
 const props = defineProps({
   openModal: Boolean,
 });
 
-const addInformations = ref({
-  name: null,
-  payBy: null,
-  value: null,
-  incomeDate: null,
-});
 const incomeName = ref(null);
-console.log(addInformations, incomeName);
+const incomeDate = ref(null);
+const incomeValue = ref(null);
+const incomeMonthly = ref(null);
+console.log(incomeName);
 const modalIsOpenned = computed(() => {
   return props.openModal;
 });
@@ -27,6 +25,23 @@ const modalIsOpenned = computed(() => {
           label="Nome da renda"
           required
         ></v-text-field>
+        <v-text-field
+          v-model="incomeDate"
+          label="Data (Mês e dia)"
+          @change="(value) => formatDate(value.target.value)"
+          required
+        ></v-text-field>
+        <v-text-field
+          v-model="incomeValue"
+          label="Valor"
+          required
+        ></v-text-field>
+        <v-switch
+          v-model="incomeMonthly"
+          hide-details
+          inset
+          :label="`${incomeMonthly ? 'Entrada mensal' : 'Única entrada'}`"
+        ></v-switch>
       </v-card-text>
       <v-card-actions>
         <v-btn color="primary" @click="() => emit('closeModal', 'close')"
