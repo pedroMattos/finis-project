@@ -1,6 +1,6 @@
 <script setup>
 import { defineProps, computed, defineEmits, ref } from "vue";
-import { formatDate } from "@/utils/formatters";
+import DatePickerComponent from "@/components/DatePicker/DatePickerComponent.vue";
 const emit = defineEmits(["closeModal"]);
 const props = defineProps({
   openModal: Boolean,
@@ -14,6 +14,11 @@ console.log(incomeName);
 const modalIsOpenned = computed(() => {
   return props.openModal;
 });
+
+function searchDate(value) {
+  console.log({ value });
+  incomeDate.value = value;
+}
 </script>
 
 <template>
@@ -25,12 +30,7 @@ const modalIsOpenned = computed(() => {
           label="Nome da renda"
           required
         ></v-text-field>
-        <v-text-field
-          v-model="incomeDate"
-          label="Data (Mês e dia)"
-          @change="(value) => formatDate(value.target.value)"
-          required
-        ></v-text-field>
+        <date-picker-component @dateTerm="searchDate" />
         <v-text-field
           v-model="incomeValue"
           label="Valor"
@@ -44,8 +44,11 @@ const modalIsOpenned = computed(() => {
         ></v-switch>
       </v-card-text>
       <v-card-actions>
+        <v-btn color="secondary" @click="() => emit('closeModal', 'close')"
+          >Cancelar</v-btn
+        >
         <v-btn color="primary" @click="() => emit('closeModal', 'close')"
-          >Close Dialog</v-btn
+          >Salvar</v-btn
         >
       </v-card-actions>
     </v-card>

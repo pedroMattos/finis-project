@@ -1,25 +1,27 @@
 <script setup>
 import ButtonAdd from "@/components/ButtonAdd/ButtonAdd.vue";
 import ModalAddIncome from "@/views/Modals/ModalAddIncome.vue";
+import ModalAddInvoice from "../Modals/ModalAddInvoice.vue";
 import { defineProps, ref } from "vue";
-defineProps({
+const props = defineProps({
   isExpense: { type: Boolean, default: false },
   currency: { type: String, default: "pt-br" },
   valueIncoming: { type: [Number, String], default: "-" },
 });
 
 let openModal = ref(false);
+const isInvoice = ref(props.isExpense)
 
-function setModalState(state) {
+function setModalState(state, type) {
   switch (state) {
     case "open":
-      openModal.value = true;
+      openModal.value = type;
       break;
     case "close":
-      openModal.value = false;
+      openModal.value = null;
       break;
     default:
-      openModal.value = true;
+      openModal.value = 'receipt';
       break;
   }
 }
@@ -27,14 +29,15 @@ function setModalState(state) {
 
 <template>
   <div class="card">
-    <p :class="{ 'value-text': true, 'negative-incoming': valueIncoming < 0 }">
+    <p :class="{ 'value-text': true, 'negative-incoming': isInvoice }">
       R$ {{ valueIncoming }}
     </p>
     <ButtonAdd
-      :text="valueIncoming < 0 ? 'Adicionar gasto' : 'Adicionar renda'"
-      @click="() => setModalState('open')"
+      :text="isInvoice ? 'Adicionar gasto' : 'Adicionar renda'"
+      @click="() => setModalState('open', isInvoice ? 'invoice' : 'receipt')"
     />
-    <ModalAddIncome :openModal="openModal" @closeModal="setModalState" />
+    <ModalAddIncome :openModal="openModal === 'receipt'" @closeModal="setModalState" />
+    <ModalAddInvoice :openModal="openModal === 'invoice'" @closeModal="setModalState" />
   </div>
 </template>
 
